@@ -71,6 +71,15 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Joystick"",
+                    ""type"": ""Value"",
+                    ""id"": ""aec8692e-c3b2-43e8-9bb8-cc002d8a6bde"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -154,7 +163,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""left"",
                     ""id"": ""a4b46fb5-c3f9-4008-b7ce-2433e42a5b65"",
-                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -165,7 +174,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": ""right"",
                     ""id"": ""a3669fc2-405f-4e06-948c-975782447e99"",
-                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -194,6 +203,17 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""LooseRope"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""5eedc8fb-32ae-496e-943f-fb7c4838b095"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -207,6 +227,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
         m_Crane_ShrinkRope = m_Crane.FindAction("ShrinkRope", throwIfNotFound: true);
         m_Crane_LooseRope = m_Crane.FindAction("LooseRope", throwIfNotFound: true);
         m_Crane_Rotate = m_Crane.FindAction("Rotate", throwIfNotFound: true);
+        m_Crane_Joystick = m_Crane.FindAction("Joystick", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -273,6 +294,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Crane_ShrinkRope;
     private readonly InputAction m_Crane_LooseRope;
     private readonly InputAction m_Crane_Rotate;
+    private readonly InputAction m_Crane_Joystick;
     public struct CraneActions
     {
         private @CraneInputActions m_Wrapper;
@@ -282,6 +304,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
         public InputAction @ShrinkRope => m_Wrapper.m_Crane_ShrinkRope;
         public InputAction @LooseRope => m_Wrapper.m_Crane_LooseRope;
         public InputAction @Rotate => m_Wrapper.m_Crane_Rotate;
+        public InputAction @Joystick => m_Wrapper.m_Crane_Joystick;
         public InputActionMap Get() { return m_Wrapper.m_Crane; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -306,6 +329,9 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
             @Rotate.started += instance.OnRotate;
             @Rotate.performed += instance.OnRotate;
             @Rotate.canceled += instance.OnRotate;
+            @Joystick.started += instance.OnJoystick;
+            @Joystick.performed += instance.OnJoystick;
+            @Joystick.canceled += instance.OnJoystick;
         }
 
         private void UnregisterCallbacks(ICraneActions instance)
@@ -325,6 +351,9 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
             @Rotate.started -= instance.OnRotate;
             @Rotate.performed -= instance.OnRotate;
             @Rotate.canceled -= instance.OnRotate;
+            @Joystick.started -= instance.OnJoystick;
+            @Joystick.performed -= instance.OnJoystick;
+            @Joystick.canceled -= instance.OnJoystick;
         }
 
         public void RemoveCallbacks(ICraneActions instance)
@@ -349,5 +378,6 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
         void OnShrinkRope(InputAction.CallbackContext context);
         void OnLooseRope(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
+        void OnJoystick(InputAction.CallbackContext context);
     }
 }

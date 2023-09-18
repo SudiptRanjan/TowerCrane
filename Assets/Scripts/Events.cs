@@ -9,8 +9,8 @@ public static class Events
     public delegate void OnRotate(float yDirectionRotate);
     public static OnRotate onPlayerRotate;
 
-    public delegate void ObjectInteract();
-	public static ObjectInteract onObjectInteract;
+    public delegate void OnRopeLengthChange(float ropeValue);
+	public static OnRopeLengthChange onRopeValueChange;
 
 	//public delegate void ObjectIsAttached();
 	//public static ObjectIsAttached objectIsAttached;

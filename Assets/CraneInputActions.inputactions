@@ -49,6 +49,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Joystick",
+                    "type": "Value",
+                    "id": "aec8692e-c3b2-43e8-9bb8-cc002d8a6bde",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -132,7 +141,7 @@
                 {
                     "name": "left",
                     "id": "a4b46fb5-c3f9-4008-b7ce-2433e42a5b65",
-                    "path": "<Keyboard>/leftArrow",
+                    "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -143,7 +152,7 @@
                 {
                     "name": "right",
                     "id": "a3669fc2-405f-4e06-948c-975782447e99",
-                    "path": "<Keyboard>/rightArrow",
+                    "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -170,6 +179,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "LooseRope",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5eedc8fb-32ae-496e-943f-fb7c4838b095",
+                    "path": "<Gamepad>/leftStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Joystick",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

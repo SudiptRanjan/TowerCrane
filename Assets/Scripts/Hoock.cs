@@ -15,7 +15,6 @@ public class Hoock : MonoBehaviour
         CheckingOfPhysicsBody();
     }
 
-   
 
     void CheckingOfPhysicsBody()
     {

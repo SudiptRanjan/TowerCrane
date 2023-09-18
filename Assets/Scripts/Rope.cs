@@ -1,4 +1,3 @@
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,29 +21,54 @@ public class Rope : MonoBehaviour
 
     void Update()
     {
-        SetLengthOfRope();
+
+
+    }
+
+    private void OnEnable()
+    {
+        Events.onRopeValueChange += SetLengthOfRope;
+
+    }
+    private void OnDisable()
+    {
+        Events.onRopeValueChange -= SetLengthOfRope;
+
     }
 
 
 
-    void SetLengthOfRope()
+    void SetLengthOfRope( float ropeValue)
     {
 
-        distanceOfRope = Mathf.Clamp(springJoint.maxDistance, minDistance, maxDistance);
+        
         line.SetPosition(0, transform.position);
         line.SetPosition(1, springJoint.connectedBody.transform.position);
-        if (Input.GetKey(KeyCode.UpArrow))
+        //if (Input.GetKey(KeyCode.UpArrow))
+        //{
+
+        //    springJoint.maxDistance = distanceOfRope += 0.1f;
+        //    //springJoint.maxDistance += 0.1f;
+        //}
+        //if (Input.GetKey(KeyCode.DownArrow))
+        //{
+        //    springJoint.maxDistance = distanceOfRope -= 0.1f;
+        //    //springJoint.maxDistance -= 0.1f;
+        //}
+        print(ropeValue);
+
+        if (ropeValue == 1)
         {
 
             springJoint.maxDistance = distanceOfRope += 0.1f;
             //springJoint.maxDistance += 0.1f;
-            //Debug.Log("executing");
         }
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (ropeValue == -1)
         {
             springJoint.maxDistance = distanceOfRope -= 0.1f;
             //springJoint.maxDistance -= 0.1f;
         }
+        distanceOfRope = Mathf.Clamp(springJoint.maxDistance, minDistance, maxDistance);
 
     }
 

@@ -28,11 +28,11 @@ public class Connector : MonoBehaviour
 	private void Start()
 	{
 		rb = GetComponent<Rigidbody>();
-		Events.onObjectInteract += InteractWithObject;
+		//Events.onObjectInteract += InteractWithObject;
 	}
 	private void OnDestroy()
 	{
-		Events.onObjectInteract -= InteractWithObject;
+		//Events.onObjectInteract -= InteractWithObject;
 	}
 
 	private void Update()
