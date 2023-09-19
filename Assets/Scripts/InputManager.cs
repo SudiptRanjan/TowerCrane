@@ -10,9 +10,8 @@ public class InputManager : MonoBehaviour
 	public static InputManager instance;
 
 	private CraneInputActions m_inputaction;
-	private float ropeLength, moveZ,  rotateValue;
+	private float ropeLength, moveZ,  rotateValue, attached, detached;
 	
-
 	public bool isShrining = false;
 	public bool looseRope = false;	
 
@@ -25,43 +24,82 @@ public class InputManager : MonoBehaviour
 		m_inputaction = new CraneInputActions();
 		m_inputaction.Enable();
 		m_inputaction.Crane.Movement.performed += OnCraneMoves;
+		m_inputaction.Crane.Movement.canceled += OnCraneMoves;
 		m_inputaction.Crane.Movement.performed += onCraneRotate;
-        //m_inputaction.Crane.ShrinkRope.performed += OnRopeShrinkEnable;
-        //      m_inputaction.Crane.ShrinkRope.canceled += OnRopeShrinkDisable;
-        //      m_inputaction.Crane.LooseRope.performed += OnRopeLooseEnable;
-        //      m_inputaction.Crane.LooseRope.canceled += OnRopeLooseDisable;
-        //m_inputaction.Crane.PickupAndDrop.performed += OnPickUpandDrop;
-        m_inputaction.Crane.Rotate.performed += onRopeLengthChange;
+		m_inputaction.Crane.Movement.canceled += onCraneRotate;
+		//m_inputaction.Crane.PickupAndDrop.performed += OnPickUpandDrop;
+		m_inputaction.Crane.Rotate.performed += onRopeLengthChange;
+        m_inputaction.Crane.Rotate.canceled += onRopeLengthChange;
+		m_inputaction.Crane.Rotate.performed += onRopeLengthChange;
+
+		m_inputaction.Crane.Pickup.performed += onObjectAttached;
+		m_inputaction.Crane.Pickup.canceled += onObjectAttached;
+		m_inputaction.Crane.Drop.performed += onObjectDetached;
+		m_inputaction.Crane.Drop.canceled += onObjectDetached;
+		//joystick
+		m_inputaction.Crane.Joystick.performed += OnCraneMoves;
+		m_inputaction.Crane.Joystick.canceled += OnCraneMoves;
+		m_inputaction.Crane.Joystick.performed += onCraneRotate;
+		m_inputaction.Crane.Joystick.canceled += onCraneRotate;
+
+		m_inputaction.Crane.RightJoystick.performed += onRopeLengthChange;
+		m_inputaction.Crane.RightJoystick.canceled += onRopeLengthChange;
+
+	
+
+
 	}
 	private void OnDisable()
 	{
+
+
 		m_inputaction.Crane.Movement.performed -= OnCraneMoves;
+		m_inputaction.Crane.Movement.canceled -= OnCraneMoves;
 		m_inputaction.Crane.Movement.performed -= onCraneRotate;
-        //m_inputaction.Crane.ShrinkRope.performed -= OnRopeShrinkEnable;
-        //      m_inputaction.Crane.ShrinkRope.canceled -= OnRopeShrinkDisable;
-        //      m_inputaction.Crane.LooseRope.performed -= OnRopeLooseEnable;
-        //      m_inputaction.Crane.LooseRope.canceled -= OnRopeLooseDisable;
-        //m_inputaction.Crane.PickupAndDrop.performed -= onRopeLengthChange;
-        m_inputaction.Crane.Rotate.performed -= onRopeLengthChange;
+		m_inputaction.Crane.Movement.canceled -= onCraneRotate;
+		//m_inputaction.Crane.PickupAndDrop.performed -= onRopeLengthChange;
+		m_inputaction.Crane.Rotate.performed -= onRopeLengthChange;
+        m_inputaction.Crane.Rotate.canceled -= onRopeLengthChange;
+
+		m_inputaction.Crane.Pickup.performed -= onObjectAttached;
+		m_inputaction.Crane.Pickup.canceled -= onObjectAttached;
+		m_inputaction.Crane.Drop.performed -= onObjectDetached;
+		m_inputaction.Crane.Drop.canceled -= onObjectDetached;
+
+
 		m_inputaction.Dispose();
+
+		//joystick
+		m_inputaction.Crane.Joystick.performed -= OnCraneMoves;
+		m_inputaction.Crane.Joystick.canceled -= OnCraneMoves;
+		m_inputaction.Crane.Joystick.performed -= onCraneRotate;
+		m_inputaction.Crane.Joystick.canceled -= onCraneRotate;
+
+		m_inputaction.Crane.RightJoystick.performed -= onRopeLengthChange;
+		m_inputaction.Crane.RightJoystick.canceled -= onRopeLengthChange;
+
+	
+
 	}
 	private void Update()
 	{
 		Events.onPlayerMoves?.Invoke( moveZ);
         Events.onPlayerRotate?.Invoke(rotateValue);
 		Events.onRopeValueChange?.Invoke(ropeLength);
+		Events.onHookDetachedToObject?.Invoke(detached);
+		Events.onHookAttachToObject?.Invoke(attached);
 	}
 
 	private void OnCraneMoves(InputAction.CallbackContext obj)
 	{
-		Vector3 value = obj.ReadValue<Vector3>();
+		Vector2 value = obj.ReadValue<Vector2>();
         moveZ = value.y;
 	}
 
 
 	private void onCraneRotate(InputAction.CallbackContext obj)
     {
-        Vector3 value = obj.ReadValue<Vector3>();
+        Vector2 value = obj.ReadValue<Vector2>();
 		//rotateValue = value.x;
 		rotateValue = value.x;
 		
@@ -69,29 +107,22 @@ public class InputManager : MonoBehaviour
 
 	private void onRopeLengthChange(InputAction.CallbackContext obj)
     {
-		Vector3 value = obj.ReadValue<Vector3>();
-		ropeLength = value.x;
+		Vector2 value = obj.ReadValue<Vector2>();
+		ropeLength = value.y;
+	
+
+	}
+	private void onObjectDetached(InputAction.CallbackContext obj)
+    {
+		float value = obj.ReadValue<float>();
+		detached = value;
+    }
+	private void onObjectAttached(InputAction.CallbackContext obj)
+	{
+		float value = obj.ReadValue<float>();
+		attached = value;
 	}
 
-	private void OnRopeShrinkEnable(InputAction.CallbackContext obj)
-	{
-		 isShrining = true;
-	}
-	private void OnRopeShrinkDisable(InputAction.CallbackContext obj)
-	{
-		isShrining = false;
-	}
-	private void OnRopeLooseEnable(InputAction.CallbackContext obj)
-	{
-		looseRope = true;
-	}
-	private void OnRopeLooseDisable(InputAction.CallbackContext obj)
-	{
-		looseRope = false;
-	}
 
-	//private void OnPickUpandDrop(InputAction.CallbackContext obj)
-	//{
-	//	Events.onObjectInteract?.Invoke();
-	//}
+	
 }

@@ -31,33 +31,15 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Movement"",
                     ""type"": ""Value"",
                     ""id"": ""1485e50b-1ee4-4a46-b07d-70421a4515cc"",
-                    ""expectedControlType"": ""Vector3"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""PickupAndDrop"",
+                    ""name"": ""Pickup"",
                     ""type"": ""Button"",
                     ""id"": ""be97a59a-17b2-4905-bee2-178df83356b0"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ShrinkRope"",
-                    ""type"": ""Button"",
-                    ""id"": ""fc1b1fc1-e670-46c1-94b5-f8d02d62a847"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""LooseRope"",
-                    ""type"": ""Button"",
-                    ""id"": ""308d90be-4691-42f8-97f4-66830dd73990"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -67,7 +49,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                     ""name"": ""Rotate"",
                     ""type"": ""Value"",
                     ""id"": ""7aae8965-6fb5-44dd-bbfa-13bf020a16e0"",
-                    ""expectedControlType"": ""Vector3"",
+                    ""expectedControlType"": ""Vector2"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
@@ -80,13 +62,31 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""RightJoystick"",
+                    ""type"": ""Value"",
+                    ""id"": ""8a5f3441-0a9f-41de-88f0-7c5ef9724c1d"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Button"",
+                    ""id"": ""5e55d0a6-9205-470f-88c9-f2993eb3fd4f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": ""3D Vector"",
+                    ""name"": ""2D Vector"",
                     ""id"": ""27dcfcfc-d4b6-47e2-a1e0-aabc71e8ac5d"",
-                    ""path"": ""3DVector"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -95,7 +95,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
+                    ""name"": ""Up"",
                     ""id"": ""d885558a-7ac7-46c5-a5f6-4fc644824f87"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
@@ -106,7 +106,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""down"",
+                    ""name"": ""Down"",
                     ""id"": ""a17e9f51-5479-415f-bb3f-7824953e5e06"",
                     ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
@@ -117,7 +117,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
+                    ""name"": ""Left"",
                     ""id"": ""41baaaab-a2bd-4630-a7b1-39424baa0608"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
@@ -128,7 +128,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
+                    ""name"": ""Right"",
                     ""id"": ""6d61bd62-8f07-4493-ba90-ec43490edebe"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
@@ -141,18 +141,18 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""a38a0ca2-8de7-45ac-adb1-30179b89b663"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/g"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""PickupAndDrop"",
+                    ""action"": ""Pickup"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""3D Vector"",
+                    ""name"": ""2D Vector"",
                     ""id"": ""4953b188-197c-4573-904d-280c7617df49"",
-                    ""path"": ""3DVector"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -161,7 +161,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""left"",
+                    ""name"": ""Up"",
                     ""id"": ""a4b46fb5-c3f9-4008-b7ce-2433e42a5b65"",
                     ""path"": ""<Keyboard>/upArrow"",
                     ""interactions"": """",
@@ -172,7 +172,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
+                    ""name"": ""Down"",
                     ""id"": ""a3669fc2-405f-4e06-948c-975782447e99"",
                     ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
@@ -184,34 +184,34 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e056b6e3-c4de-42fb-8f27-e7bffa2b63a3"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ShrinkRope"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""0a56b475-2cf2-40c5-91f8-e1cb20de3e1f"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""LooseRope"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""5eedc8fb-32ae-496e-943f-fb7c4838b095"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Joystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e6dfc218-8df4-41c8-9ac9-ae94e8cc3892"",
+                    ""path"": ""<Gamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RightJoystick"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a4932629-0224-44aa-8781-8130e1fea940"",
+                    ""path"": ""<Keyboard>/h"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -223,11 +223,11 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
         // Crane
         m_Crane = asset.FindActionMap("Crane", throwIfNotFound: true);
         m_Crane_Movement = m_Crane.FindAction("Movement", throwIfNotFound: true);
-        m_Crane_PickupAndDrop = m_Crane.FindAction("PickupAndDrop", throwIfNotFound: true);
-        m_Crane_ShrinkRope = m_Crane.FindAction("ShrinkRope", throwIfNotFound: true);
-        m_Crane_LooseRope = m_Crane.FindAction("LooseRope", throwIfNotFound: true);
+        m_Crane_Pickup = m_Crane.FindAction("Pickup", throwIfNotFound: true);
         m_Crane_Rotate = m_Crane.FindAction("Rotate", throwIfNotFound: true);
         m_Crane_Joystick = m_Crane.FindAction("Joystick", throwIfNotFound: true);
+        m_Crane_RightJoystick = m_Crane.FindAction("RightJoystick", throwIfNotFound: true);
+        m_Crane_Drop = m_Crane.FindAction("Drop", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -290,21 +290,21 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Crane;
     private List<ICraneActions> m_CraneActionsCallbackInterfaces = new List<ICraneActions>();
     private readonly InputAction m_Crane_Movement;
-    private readonly InputAction m_Crane_PickupAndDrop;
-    private readonly InputAction m_Crane_ShrinkRope;
-    private readonly InputAction m_Crane_LooseRope;
+    private readonly InputAction m_Crane_Pickup;
     private readonly InputAction m_Crane_Rotate;
     private readonly InputAction m_Crane_Joystick;
+    private readonly InputAction m_Crane_RightJoystick;
+    private readonly InputAction m_Crane_Drop;
     public struct CraneActions
     {
         private @CraneInputActions m_Wrapper;
         public CraneActions(@CraneInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Crane_Movement;
-        public InputAction @PickupAndDrop => m_Wrapper.m_Crane_PickupAndDrop;
-        public InputAction @ShrinkRope => m_Wrapper.m_Crane_ShrinkRope;
-        public InputAction @LooseRope => m_Wrapper.m_Crane_LooseRope;
+        public InputAction @Pickup => m_Wrapper.m_Crane_Pickup;
         public InputAction @Rotate => m_Wrapper.m_Crane_Rotate;
         public InputAction @Joystick => m_Wrapper.m_Crane_Joystick;
+        public InputAction @RightJoystick => m_Wrapper.m_Crane_RightJoystick;
+        public InputAction @Drop => m_Wrapper.m_Crane_Drop;
         public InputActionMap Get() { return m_Wrapper.m_Crane; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -317,21 +317,21 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
             @Movement.started += instance.OnMovement;
             @Movement.performed += instance.OnMovement;
             @Movement.canceled += instance.OnMovement;
-            @PickupAndDrop.started += instance.OnPickupAndDrop;
-            @PickupAndDrop.performed += instance.OnPickupAndDrop;
-            @PickupAndDrop.canceled += instance.OnPickupAndDrop;
-            @ShrinkRope.started += instance.OnShrinkRope;
-            @ShrinkRope.performed += instance.OnShrinkRope;
-            @ShrinkRope.canceled += instance.OnShrinkRope;
-            @LooseRope.started += instance.OnLooseRope;
-            @LooseRope.performed += instance.OnLooseRope;
-            @LooseRope.canceled += instance.OnLooseRope;
+            @Pickup.started += instance.OnPickup;
+            @Pickup.performed += instance.OnPickup;
+            @Pickup.canceled += instance.OnPickup;
             @Rotate.started += instance.OnRotate;
             @Rotate.performed += instance.OnRotate;
             @Rotate.canceled += instance.OnRotate;
             @Joystick.started += instance.OnJoystick;
             @Joystick.performed += instance.OnJoystick;
             @Joystick.canceled += instance.OnJoystick;
+            @RightJoystick.started += instance.OnRightJoystick;
+            @RightJoystick.performed += instance.OnRightJoystick;
+            @RightJoystick.canceled += instance.OnRightJoystick;
+            @Drop.started += instance.OnDrop;
+            @Drop.performed += instance.OnDrop;
+            @Drop.canceled += instance.OnDrop;
         }
 
         private void UnregisterCallbacks(ICraneActions instance)
@@ -339,21 +339,21 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
             @Movement.started -= instance.OnMovement;
             @Movement.performed -= instance.OnMovement;
             @Movement.canceled -= instance.OnMovement;
-            @PickupAndDrop.started -= instance.OnPickupAndDrop;
-            @PickupAndDrop.performed -= instance.OnPickupAndDrop;
-            @PickupAndDrop.canceled -= instance.OnPickupAndDrop;
-            @ShrinkRope.started -= instance.OnShrinkRope;
-            @ShrinkRope.performed -= instance.OnShrinkRope;
-            @ShrinkRope.canceled -= instance.OnShrinkRope;
-            @LooseRope.started -= instance.OnLooseRope;
-            @LooseRope.performed -= instance.OnLooseRope;
-            @LooseRope.canceled -= instance.OnLooseRope;
+            @Pickup.started -= instance.OnPickup;
+            @Pickup.performed -= instance.OnPickup;
+            @Pickup.canceled -= instance.OnPickup;
             @Rotate.started -= instance.OnRotate;
             @Rotate.performed -= instance.OnRotate;
             @Rotate.canceled -= instance.OnRotate;
             @Joystick.started -= instance.OnJoystick;
             @Joystick.performed -= instance.OnJoystick;
             @Joystick.canceled -= instance.OnJoystick;
+            @RightJoystick.started -= instance.OnRightJoystick;
+            @RightJoystick.performed -= instance.OnRightJoystick;
+            @RightJoystick.canceled -= instance.OnRightJoystick;
+            @Drop.started -= instance.OnDrop;
+            @Drop.performed -= instance.OnDrop;
+            @Drop.canceled -= instance.OnDrop;
         }
 
         public void RemoveCallbacks(ICraneActions instance)
@@ -374,10 +374,10 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
     public interface ICraneActions
     {
         void OnMovement(InputAction.CallbackContext context);
-        void OnPickupAndDrop(InputAction.CallbackContext context);
-        void OnShrinkRope(InputAction.CallbackContext context);
-        void OnLooseRope(InputAction.CallbackContext context);
+        void OnPickup(InputAction.CallbackContext context);
         void OnRotate(InputAction.CallbackContext context);
         void OnJoystick(InputAction.CallbackContext context);
+        void OnRightJoystick(InputAction.CallbackContext context);
+        void OnDrop(InputAction.CallbackContext context);
     }
 }

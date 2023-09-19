@@ -4,37 +4,59 @@ using UnityEngine;
 
 public class Hoock : MonoBehaviour
 {
-    [SerializeField] private bool attached = false;
+   
     [SerializeField] private float radius;
     public Transform hoockConnect;
     public FixedJoint fixedJoint;
-
+    Rigidbody rb;
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
     void Update()
     {
-      
-        CheckingOfPhysicsBody();
+        rb.WakeUp();
+    
     }
 
-
-    void CheckingOfPhysicsBody()
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.H))
+        Events.onHookAttachToObject += CheckingOfPhysicsBody;
+        Events.onHookDetachedToObject += BodyIsDetached;
+    }
+
+    private void OnDisable()
+    {
+        Events.onHookAttachToObject -= CheckingOfPhysicsBody;
+        Events.onHookDetachedToObject -=  BodyIsDetached;
+    }
+
+    void BodyIsDetached(float detached)
+    {
+        //print(detached);
+
+        if (detached == 1)
         {
-            attached = false;
+
             fixedJoint.connectedBody = null;
 
         }
+    }
 
-        if (Input.GetKeyDown(KeyCode.G) )
+
+    void CheckingOfPhysicsBody(float attached)
+    {
+
+        if (attached ==  1)
         {
-            attached = true;
+           
             Collider[] hitColliders = Physics.OverlapSphere(transform.position, radius);
             foreach (Collider grabableObject in hitColliders)
             {
                
                 Container grabableContainer = grabableObject.gameObject.GetComponent<Container>();
-                print(grabableContainer);
-                if (grabableContainer != null &&  attached)
+                //print(grabableContainer);
+                if (grabableContainer != null )
                 {
                     grabableContainer.transform.position = hoockConnect.transform.position;
                     fixedJoint.connectedBody = grabableContainer.rb;
@@ -43,8 +65,6 @@ public class Hoock : MonoBehaviour
             }
 
         }
-
-      
     }
 
     //private void OnTriggerEnter(Collider other)

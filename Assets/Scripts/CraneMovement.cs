@@ -30,16 +30,54 @@ public class CraneMovement : MonoBehaviour
 
 	private void Move( float yDirection)
 	{
-		if(yDirection== 1)
-        {
-			clampMovement += Time.deltaTime * speed;
-		}
-		else if(yDirection == -1)
-        {
-			clampMovement -= Time.deltaTime * speed;
-		}
+        //if(yDirection== 1 || yDirection > 0)
+        //{
+        //	clampMovement += Time.deltaTime * speed;
+        //}
+        //else if(yDirection == -1 || yDirection < 0)
+        //      {
+        //	clampMovement -= Time.deltaTime * speed;
+        //}
 
-		clampMovement = Mathf.Clamp(clampMovement, yMinValue, yManValue);
+        if (yDirection == 1 || yDirection > 0)
+        {
+            if (yDirection > 0 && yDirection < 0.3)
+            {
+                clampMovement += Time.deltaTime * speed * 0.3f;
+                //print("Gear 1");
+            }
+            else if (yDirection > 0.3 && yDirection < 0.7)
+            {
+                clampMovement += Time.deltaTime * speed * 0.6f;
+                //print("Gear 2");
+            }
+            else if (yDirection > 0.7 && yDirection < 1)
+            {
+                clampMovement += Time.deltaTime * speed;
+                //print("Gear 3");
+            }
+        }
+        else if (yDirection == -1 || yDirection < 0)
+        {
+            if (yDirection < 0 && yDirection > -0.3)
+            {
+                clampMovement -= Time.deltaTime * speed * 0.3f;
+                //print("ReverceGear 1");
+            }
+            else if (yDirection < -0.3 && yDirection > -0.7)
+            {
+                clampMovement -= Time.deltaTime * speed * 0.6f;
+                //print("ReverceGear 2");
+            }
+            else if (yDirection < -0.7 && yDirection > -1)
+            {
+                clampMovement -= Time.deltaTime * speed;
+              //  print("ReverceGear 3");
+            }
+        }
+
+
+        clampMovement = Mathf.Clamp(clampMovement, yMinValue, yManValue);
 		transform.localPosition = new Vector3(0, 2.4f, clampMovement);
 
 		

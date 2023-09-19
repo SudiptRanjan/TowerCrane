@@ -36,21 +36,47 @@ public class JibMovement : MonoBehaviour
         //transform.localRotation = Quaternion.Euler(new Vector3(0, newRotation,0));
 
         //transform.Rotate(Vector3.up * rotate * Time.deltaTime * moveSpeed);
-        //if(rotate ==1)
-        //{
-        //    newRotation += Time.deltaTime * moveSpeed;
-        //}
-        //else if(rotate == -1)
-        //{
-        //    newRotation -= Time.deltaTime * moveSpeed;
-        //}
-        if (rotate == 1)
+
+        //print(rotate);
+        if ( rotate > 0)
         {
-            newRotation += Time.deltaTime * moveSpeed;
+            if (rotate > 0 && rotate < 0.3)
+            {
+                newRotation += Time.deltaTime * moveSpeed * 0.3f;
+                //print("Gear 1");
+            }
+            else if (rotate > 0.3 && rotate < 0.7)
+            {
+                newRotation += Time.deltaTime * moveSpeed * 0.6f;
+                //print("Gear 2");
+            }
+            else if (rotate > 0.7 && rotate <= 1)
+            {
+                newRotation += Time.deltaTime * moveSpeed;
+                //print("Gear 3");
+            }
+
+          
+
         }
-        else if (rotate == -1)
+        else if ( rotate < 0)
         {
-            newRotation -= Time.deltaTime * moveSpeed;
+            if (rotate < 0 && rotate > -0.3)
+            {
+                newRotation -= Time.deltaTime * moveSpeed * 0.3f;
+                //print("ReverceGear 1");
+            }
+            else if (rotate < -0.3 && rotate > -0.7)
+            {
+                newRotation -= Time.deltaTime * moveSpeed * 0.6f;
+                //print("ReverceGear 2");
+            }
+            else if (rotate < -0.7 && rotate > -1)
+            {
+                newRotation -= Time.deltaTime * moveSpeed;
+                //print("ReverceGear 3");
+            }
+           
         }
 
         newRotation = Mathf.Clamp(newRotation, yMinValueRotation, yMaxValueRotation);
