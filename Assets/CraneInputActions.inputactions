@@ -24,7 +24,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Rotate",
+                    "name": "LengtOfRope",
                     "type": "Value",
                     "id": "7aae8965-6fb5-44dd-bbfa-13bf020a16e0",
                     "expectedControlType": "Vector2",
@@ -134,7 +134,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotate",
+                    "action": "LengtOfRope",
                     "isComposite": true,
                     "isPartOfComposite": false
                 },
@@ -145,7 +145,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotate",
+                    "action": "LengtOfRope",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
@@ -156,7 +156,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Rotate",
+                    "action": "LengtOfRope",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },

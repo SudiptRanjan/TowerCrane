@@ -11,5 +11,8 @@ public class Container : MonoBehaviour
 		rb = GetComponent<Rigidbody>();
 	}
 
-	
+    private void Update()
+    {
+        rb.WakeUp();
+    }
 }

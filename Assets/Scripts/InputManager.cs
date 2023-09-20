@@ -27,10 +27,11 @@ public class InputManager : MonoBehaviour
 		m_inputaction.Crane.Movement.canceled += OnCraneMoves;
 		m_inputaction.Crane.Movement.performed += onCraneRotate;
 		m_inputaction.Crane.Movement.canceled += onCraneRotate;
-		//m_inputaction.Crane.PickupAndDrop.performed += OnPickUpandDrop;
-		m_inputaction.Crane.Rotate.performed += onRopeLengthChange;
-        m_inputaction.Crane.Rotate.canceled += onRopeLengthChange;
-		m_inputaction.Crane.Rotate.performed += onRopeLengthChange;
+
+
+		m_inputaction.Crane.LengtOfRope.performed += onRopeLengthChange;
+        m_inputaction.Crane.LengtOfRope.canceled += onRopeLengthChange;
+		//m_inputaction.Crane.Rotate.performed += onRopeLengthChange;
 
 		m_inputaction.Crane.Pickup.performed += onObjectAttached;
 		m_inputaction.Crane.Pickup.canceled += onObjectAttached;
@@ -57,9 +58,10 @@ public class InputManager : MonoBehaviour
 		m_inputaction.Crane.Movement.canceled -= OnCraneMoves;
 		m_inputaction.Crane.Movement.performed -= onCraneRotate;
 		m_inputaction.Crane.Movement.canceled -= onCraneRotate;
-		//m_inputaction.Crane.PickupAndDrop.performed -= onRopeLengthChange;
-		m_inputaction.Crane.Rotate.performed -= onRopeLengthChange;
-        m_inputaction.Crane.Rotate.canceled -= onRopeLengthChange;
+
+
+		m_inputaction.Crane.LengtOfRope.performed -= onRopeLengthChange;
+        m_inputaction.Crane.LengtOfRope.canceled -= onRopeLengthChange;
 
 		m_inputaction.Crane.Pickup.performed -= onObjectAttached;
 		m_inputaction.Crane.Pickup.canceled -= onObjectAttached;

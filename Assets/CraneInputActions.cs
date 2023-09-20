@@ -46,7 +46,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Rotate"",
+                    ""name"": ""LengtOfRope"",
                     ""type"": ""Value"",
                     ""id"": ""7aae8965-6fb5-44dd-bbfa-13bf020a16e0"",
                     ""expectedControlType"": ""Vector2"",
@@ -156,7 +156,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Rotate"",
+                    ""action"": ""LengtOfRope"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -167,7 +167,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Rotate"",
+                    ""action"": ""LengtOfRope"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -178,7 +178,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Rotate"",
+                    ""action"": ""LengtOfRope"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -224,7 +224,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
         m_Crane = asset.FindActionMap("Crane", throwIfNotFound: true);
         m_Crane_Movement = m_Crane.FindAction("Movement", throwIfNotFound: true);
         m_Crane_Pickup = m_Crane.FindAction("Pickup", throwIfNotFound: true);
-        m_Crane_Rotate = m_Crane.FindAction("Rotate", throwIfNotFound: true);
+        m_Crane_LengtOfRope = m_Crane.FindAction("LengtOfRope", throwIfNotFound: true);
         m_Crane_Joystick = m_Crane.FindAction("Joystick", throwIfNotFound: true);
         m_Crane_RightJoystick = m_Crane.FindAction("RightJoystick", throwIfNotFound: true);
         m_Crane_Drop = m_Crane.FindAction("Drop", throwIfNotFound: true);
@@ -291,7 +291,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
     private List<ICraneActions> m_CraneActionsCallbackInterfaces = new List<ICraneActions>();
     private readonly InputAction m_Crane_Movement;
     private readonly InputAction m_Crane_Pickup;
-    private readonly InputAction m_Crane_Rotate;
+    private readonly InputAction m_Crane_LengtOfRope;
     private readonly InputAction m_Crane_Joystick;
     private readonly InputAction m_Crane_RightJoystick;
     private readonly InputAction m_Crane_Drop;
@@ -301,7 +301,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
         public CraneActions(@CraneInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Movement => m_Wrapper.m_Crane_Movement;
         public InputAction @Pickup => m_Wrapper.m_Crane_Pickup;
-        public InputAction @Rotate => m_Wrapper.m_Crane_Rotate;
+        public InputAction @LengtOfRope => m_Wrapper.m_Crane_LengtOfRope;
         public InputAction @Joystick => m_Wrapper.m_Crane_Joystick;
         public InputAction @RightJoystick => m_Wrapper.m_Crane_RightJoystick;
         public InputAction @Drop => m_Wrapper.m_Crane_Drop;
@@ -320,9 +320,9 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
             @Pickup.started += instance.OnPickup;
             @Pickup.performed += instance.OnPickup;
             @Pickup.canceled += instance.OnPickup;
-            @Rotate.started += instance.OnRotate;
-            @Rotate.performed += instance.OnRotate;
-            @Rotate.canceled += instance.OnRotate;
+            @LengtOfRope.started += instance.OnLengtOfRope;
+            @LengtOfRope.performed += instance.OnLengtOfRope;
+            @LengtOfRope.canceled += instance.OnLengtOfRope;
             @Joystick.started += instance.OnJoystick;
             @Joystick.performed += instance.OnJoystick;
             @Joystick.canceled += instance.OnJoystick;
@@ -342,9 +342,9 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
             @Pickup.started -= instance.OnPickup;
             @Pickup.performed -= instance.OnPickup;
             @Pickup.canceled -= instance.OnPickup;
-            @Rotate.started -= instance.OnRotate;
-            @Rotate.performed -= instance.OnRotate;
-            @Rotate.canceled -= instance.OnRotate;
+            @LengtOfRope.started -= instance.OnLengtOfRope;
+            @LengtOfRope.performed -= instance.OnLengtOfRope;
+            @LengtOfRope.canceled -= instance.OnLengtOfRope;
             @Joystick.started -= instance.OnJoystick;
             @Joystick.performed -= instance.OnJoystick;
             @Joystick.canceled -= instance.OnJoystick;
@@ -375,7 +375,7 @@ public partial class @CraneInputActions: IInputActionCollection2, IDisposable
     {
         void OnMovement(InputAction.CallbackContext context);
         void OnPickup(InputAction.CallbackContext context);
-        void OnRotate(InputAction.CallbackContext context);
+        void OnLengtOfRope(InputAction.CallbackContext context);
         void OnJoystick(InputAction.CallbackContext context);
         void OnRightJoystick(InputAction.CallbackContext context);
         void OnDrop(InputAction.CallbackContext context);

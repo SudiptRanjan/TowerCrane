@@ -68,40 +68,40 @@ public class Rope : MonoBehaviour
         //    //springJoint.maxDistance -= 0.1f;
         //}
         //print(ropeValue);
-        if (ropeValue == 1 || ropeValue > 0)
+        if ( ropeValue > 0)
         {
-            if (ropeValue > 0 && ropeValue < 0.3)
+            if (ropeValue < 0.3)
             {
                 springJoint.maxDistance = distanceOfRope += 0.03f;
-                //print("Gear 1");
+                print("Gear 1= ");
             }
-            else if (ropeValue > 0.3 && ropeValue < 0.7)
+            else if ( ropeValue < 0.7)
             {
                 springJoint.maxDistance = distanceOfRope += 0.07f;
-                //print("Gear 2");
+                print("Gear 2 " );
             }
-            else if (ropeValue > 0.7 && ropeValue < 1)
+            else if ( ropeValue <= 1)
             {
                 springJoint.maxDistance = distanceOfRope += 0.1f;
-                //print("Gear 3");
+                print("Gear 3  ");
             }
         }
-        else if (ropeValue == -1 || ropeValue < 0)
+        else if ( ropeValue < 0)
         {
-            if (ropeValue < 0 && ropeValue > -0.3)
+            if (ropeValue > -0.3)
             {
                 springJoint.maxDistance = distanceOfRope -= 0.03f;
-                //print("ReverceGear 1");
+                print("ReverceGear 1");
             }
-            else if (ropeValue < -0.3 && ropeValue > -0.7)
+            else if (  ropeValue > -0.7)
             {
                 springJoint.maxDistance = distanceOfRope -= 0.07f;
-                //print("ReverceGear 2");
+                print("ReverceGear 2");
             }
-            else if (ropeValue < -0.7 && ropeValue > -1)
+            else if ( ropeValue >= -1)
             {
                 springJoint.maxDistance = distanceOfRope -= 0.1f;
-                //print("ReverceGear 3");
+                print("ReverceGear 3");
             }
         }
 
